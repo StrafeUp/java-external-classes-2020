@@ -12,6 +12,7 @@ public class UserValidator implements Validator<User> {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[^@]+@[^.]+\\..+");
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^([a-zA-Z0-9]){8,20}$");
+    private static final Pattern NEW_PASSWORD_PATTERN = Pattern.compile("\\[(.?)+]");
     private static final Pattern TELEPHONE_PATTERN = Pattern.compile("^\\+?(38)?(\\d{10,11})$");
 
     @Override

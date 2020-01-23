@@ -13,6 +13,11 @@ public class UserServiceImpl implements UserService {
     private static final int USER_PER_PAGE = 5;
 
     private final UserRepository userRepository;
+
+    public PasswordEncryptor getPasswordEncryptor() {
+        return passwordEncryptor;
+    }
+
     private final PasswordEncryptor passwordEncryptor;
     private final Validator<User> userValidator;
 
@@ -26,7 +31,7 @@ public class UserServiceImpl implements UserService {
         String encryptedPassword = passwordEncryptor.encrypt(password);
         return userRepository.findByEmail(email)
                 .map(User::getPassword)
-                .filter(pass -> pass.equals(encryptedPassword))
+                .filter(pass -> pass.equals(password))
                 .isPresent();
     }
 

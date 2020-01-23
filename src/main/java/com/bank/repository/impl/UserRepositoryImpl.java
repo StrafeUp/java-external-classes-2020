@@ -49,7 +49,7 @@ public class UserRepositoryImpl implements UserRepository {
         int itemsPerPage = page.getItemsPerPage();
         long maxPageNumber = count();
 
-        return new Pageable<User>(findAll(pageNumber, itemsPerPage), pageNumber, itemsPerPage, (int) maxPageNumber);
+        return new Pageable<>(findAll(pageNumber, itemsPerPage), pageNumber, itemsPerPage, (int) maxPageNumber);
     }
 
     @Override

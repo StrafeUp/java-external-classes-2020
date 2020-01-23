@@ -2,9 +2,13 @@ package com.bank.service.impl;
 
 import com.bank.domain.User;
 import com.bank.injector.ApplicationInjector;
+import com.bank.service.PasswordEncryptor;
 import com.bank.service.UserService;
+import com.bank.service.exception.ValidationException;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +23,12 @@ public class UserServiceImplTest {
     private static final UserService USER_SERVICE = APPLICATION_INJECTOR.getUserService();
     private static final List<User> users = new ArrayList<>();
 
+/*    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();*/
+
     @BeforeClass
     public static void init() {
-        User user0 = User.builder().withId(0).withEmail("aasbv@asnd.com").withPassword("dasjkdls1q").build();
+        User user0 = User.builder().withId(0).withEmail("aazsbv@asnd.com").withPassword("dasjkdls1q").build();
         User user1 = User.builder().withId(1).withEmail("abvfsa@asnd.com").withPassword("fgsahjk2sa").build();
         User user2 = User.builder().withId(2).withEmail("absadv@asnd.com").withPassword("daghksjlasd").build();
         User user3 = User.builder().withId(3).withEmail("abxcv@asnd.com").withPassword("tyuiascxa").build();
@@ -40,13 +47,12 @@ public class UserServiceImplTest {
         users.add(user2);
         users.add(user3);
         users.add(user4);
-        users.add(user5);
     }
 
     @Test
-    public void login() {
-        boolean actual = USER_SERVICE.login("aasbv@asnd.com", "dasjkdls1q");
-        assertEquals(false, actual);
+    public void loginShouldProceed() {
+        boolean actual = USER_SERVICE.login("aazsbv@asnd.com", "dasjkdls1q");
+        assertEquals(true, actual);
     }
 
     @Test
