@@ -40,7 +40,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> findAll(int page, int itemsPerPage) {
-        return CollectionUtility.nullSafeListInitialize(userIdToUser.values().stream().skip((page - 1) * itemsPerPage).collect(Collectors.toList()));
+        return CollectionUtility.nullSafeListInitialize(userIdToUser.values().stream().skip((page - 1) * itemsPerPage).limit(itemsPerPage).collect(Collectors.toList()));
     }
 
     @Override
